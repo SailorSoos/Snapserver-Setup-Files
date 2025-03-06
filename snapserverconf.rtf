@@ -1,0 +1,200 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2821
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset0 Menlo-Bold;}
+{\colortbl;\red255\green255\blue255;\red56\green185\blue199;\red0\green0\blue0;\red57\green192\blue38;
+\red255\green255\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c25546\c77007\c82023;\csgray\c0;\cssrgb\c25706\c77963\c19557;
+\csgray\c100000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww22660\viewh16180\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \CocoaLigature0 ###############################################################################\cf3 \
+\cf2 #     ______\cf3                                                                   \cf2 #\cf3 \
+\cf2 #    / _____)\cf3                                                                  \cf2 #\cf3 \
+\cf2 #   ( (____   ____   _____  ____    ___  _____   ____  _   _  _____   ____    #\cf3 \
+\cf2 #    \\____ \\ |  _ \\ (____ ||  _ \\  /___)| ___ | / ___)| | | || ___ | / ___)   #\cf3 \
+\cf2 #    _____) )| | | |/ ___ || |_| ||___ || ____|| |     \\ V / | ____|| |       #\cf3 \
+\cf2 #   (______/ |_| |_|\\_____||  __/ (___/ |_____)|_|      \\_/  |_____)|_|       #\cf3 \
+\cf2 #\cf3                           \cf2 |_|\cf3                                                 \cf2 #\cf3 \
+\cf2 #\cf3                                                                              \cf2 #\cf3 \
+\cf2 #  Snapserver config file\cf3                                                      \cf2 #\cf3 \
+\cf2 #\cf3                                                                              \cf2 #\cf3 \
+\cf2 ###############################################################################\cf3 \
+\
+\cf2 # default values are commented\cf3 \
+\cf2 # uncomment and edit to change them\cf3 \
+\
+\cf2 # Settings can be overwritten on command line with:\cf3 \
+\cf2 #  "--<section>.<name>=<value>", e.g. --server.threads=4\cf3 \
+\
+\
+\cf2 # General server settings #####################################################\cf3 \
+\cf2 #\cf3 \
+
+\f1\b \cf4 [server]
+\f0\b0 \cf3 \
+\cf2 # Number of additional worker threads to use\cf3 \
+\cf2 # - For values < 0 the number of threads will be 2 (on single and dual cores)\
+#   or 4 (for quad and more cores)\cf3 \
+\cf2 # - 0 will utilize just the processes main thread and might cause audio drops \cf3 \
+\cf2 #   in case there are a couple of longer running tasks, such as encoding \cf3 \
+\cf2 #   multiple audio streams\cf3 \
+\cf2 #threads = -1\cf3 \
+\
+\cf2 # the pid file when running as daemon\cf3 \
+\cf2 #pidfile = /var/run/snapserver/pid\cf3 \
+\
+\cf2 # the user to run as when daemonized\cf3 \
+\cf2 #user = snapserver\cf3 \
+\cf2 # the group to run as when daemonized\cf3 \
+\cf2 #group = snapserver\cf3 \
+\
+\cf2 # directory where persistent data is stored (server.json)\cf3 \
+\cf2 # if empty, data dir will be\cf3 \
+\cf2 #  - "/var/lib/snapserver/" when running as daemon\cf3 \
+\cf2 #  - "$HOME/.config/snapserver/" when not running as daemon\cf3 \
+\cf2 #datadir = \cf3 \
+\
+\cf2 #\cf3 \
+\cf2 ###############################################################################\cf3 \
+\
+\
+\cf2 # HTTP RPC ####################################################################\cf3 \
+\cf2 #\cf3 \
+
+\f1\b \cf4 [http]
+\f0\b0 \cf3 \
+\cf2 # enable HTTP Json RPC (HTTP POST and websockets)\cf3 \
+enabled = true\
+\
+\cf2 # address to listen on, can be specified multiple times\cf3 \
+\cf2 # use "0.0.0.0" to bind to any IPv4 address or :: to bind to any IPv6 address\cf3 \
+\cf2 # or "127.0.0.1" or "::1" to bind to localhost IPv4 or IPv6, respectively\cf3 \
+\cf2 # use the address of a specific network interface to just listen to and accept\cf3 \
+\cf2 # connections from that interface\cf3 \
+bind_to_address = 0.0.0.0\
+\
+\cf2 # which port the server should listen to\cf3 \
+port = 1780\
+\
+\cf2 # serve a website from the doc_root location\cf3 \
+\cf2 # disabled if commented or empty\cf3 \
+doc_root = /usr/share/snapweb\
+\
+\cf2 # Hostname or IP under which clients can reach this host\cf3 \
+\cf2 # used to serve cached cover art\cf3 \
+\cf2 # use <hostname> as placeholder for your actual host name  \cf3 \
+\cf2 #host = <hostname>\cf3 \
+\
+\cf2 #\cf3 \
+\cf2 ###############################################################################\cf3 \
+\cf2 \
+# TCP RPC #####################################################################\cf3 \
+\cf2 #\cf3 \
+
+\f1\b \cf4 [tcp]
+\f0\b0 \cf3 \
+\cf2 # enable TCP Json RPC\cf3 \
+\cf2 #enabled = true\cf3 \
+\
+\cf2 # address to listen on, can be specified multiple times\cf3 \
+\cf2 # use "0.0.0.0" to bind to any IPv4 address or :: to bind to any IPv6 address\cf3 \
+\cf2 # or "127.0.0.1" or "::1" to bind to localhost IPv4 or IPv6, respectively\cf3 \
+\cf2 # use the address of a specific network interface to just listen to and accept\cf3 \
+\cf2 # connections from that interface\cf3 \
+\cf2 #bind_to_address = 0.0.0.0\cf3 \
+\
+\cf2 # which port the server should listen to\cf3 \
+\cf2 #port = 1705\cf3 \
+\cf2 #\cf3 \
+\cf2 ###############################################################################\cf3 \
+\
+\
+\cf2 # Stream settings #############################################################\cf3 \
+\cf2 #\cf3 \
+
+\f1\b \cf4 [stream]
+\f0\b0 \cf3 \
+\cf2 # address to listen on, can be specified multiple times\cf3 \
+\cf2 # use "0.0.0.0" to bind to any IPv4 address or :: to bind to any IPv6 address\cf3 \
+\cf2 # or "127.0.0.1" or "::1" to bind to localhost IPv4 or IPv6, respectively\cf3 \
+\cf2 # use the address of a specific network interface to just listen to and accept\cf3 \
+\cf2 # connections from that interface\cf3 \
+bind_to_address = 0.0.0.0\
+\
+\cf2 # which port the server should listen to\cf3 \
+port = 1704\
+\
+\cf2 # source URI of the PCM input stream, can be configured multiple times\cf3 \
+\cf2 # The following notation is used in this paragraph:\cf3 \
+\cf2 #  <angle brackets>: the whole expression must be replaced with your specific setting\cf3 \
+\cf2 # [square brackets]: the whole expression is optional and can be left out\cf3 \
+\cf2 # [key=value]: if you leave this option out, "value" will be the default for "key"\cf3 \
+\cf2 #\cf3 \
+\cf2 # Format: TYPE://host/path?name=<name>[&codec=<codec>][&sampleformat=<sampleformat>][&chunk_ms=<chunk ms>][&controlscript=<control script filenam\cf5 \cb3 >\cf3 \cb1 \
+\cf2 #  parameters have the form "key=value", they are concatenated with an "&" character\cf3 \
+\cf2 #  parameter "name" is mandatory for all sources, while codec, sampleformat and chunk_ms are optional\cf3 \
+\cf2 #  and will override the default codec, sampleformat or chunk_ms settings\cf3 \
+\cf2 # Non blocking sources support the dryout_ms parameter: when no new data is read from the source, send silence to the clients\cf3 \
+\cf2 # Available types are:\cf3 \
+\cf2 # pipe: pipe:///<path/to/pipe>?name=<name>[&mode=create][&dryout_ms=2000], mode can be "create" or "read"\cf3 \
+\cf2 # librespot: librespot:///<path/to/librespot>?name=<name>[&dryout_ms=2000][&username=<my username>&password=<my password>][&devicename=Snapcast][\cf5 \cb3 >\cf3 \cb1 \
+\cf2 #  note that you need to have the librespot binary on your machine\cf3 \
+\cf2 #  sampleformat will be set to "44100:16:2"\cf3 \
+\cf2 # file: file:///<path/to/PCM/file>?name=<name>\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 # process: process:///<path/to/process>?name=<name>[&dryout_ms=2000][&wd_timeout=0][&log_stderr=false][&params=<process arguments>]\cf3 \
+\cf2 # airplay: airplay:///<path/to/airplay>?name=<name>[&dryout_ms=2000][&port=5000]\cf3 \
+\cf2 #  note that you need to have the airplay binary on your machine\cf3 \
+\cf2 #  sampleformat will be set to "44100:16:2"\cf3 \
+\cf2 # tcp server: tcp://<listen IP, e.g. 127.0.0.1>:<port>?name=<name>[&mode=server]\cf3 \
+\cf2 # tcp client: tcp://<server IP, e.g. 127.0.0.1>:<port>?name=<name>&mode=client\cf3 \
+\cf2 # alsa: alsa://?name=<name>&device=<alsa device>[&send_silence=false][&idle_threshold=100][&silence_threshold_percent=0.0]\cf3 \
+\cf2 # meta: meta:///<name of source#1>/<name of source#2>/.../<name of source#N>?name=<name>\cf3 \
+\cf2 #source = pipe:///tmp/snapfifo?name=Spotify&sampleformat=44100:16:2\cf3 \
+source = pipe:///tmp/snapfifo-amy?name=AmySpotify&sampleformat=44100:16:2\
+source = pipe:///tmp/snapfifo-peter?name=PeterSpotify&sampleformat=44100:16:2\
+source = pipe:///tmp/snapfifo-guest?name=GuestSpotify&sampleformat=44100:16:2\
+\
+\cf2 #source = pipe:///tmp/snapfifo?name=default\cf3 \
+\cf2 #source = tcp://127.0.0.1?name=mopidy_tcp\cf3 \
+\
+\cf2 # Default sample format: <sample rate>:<bits per sample>:<channels>\cf3 \
+\cf2 #sampleformat = 48000:16:2\cf3 \
+\
+\cf2 # Default transport codec\cf3 \
+\cf2 # (flac|ogg|opus|pcm)[:options]\cf3 \
+\cf2 # Start Snapserver with "--stream:codec=<codec>:?" to get codec specific options\cf3 \
+\cf2 #codec = flac\cf3 \
+\
+\cf2 # Default source stream read chunk size [ms]. \cf3 \
+\cf2 # The server will continously read this number of milliseconds from the source into buffer and pass this buffer to the encoder.\cf3 \
+\cf2 # The encoded buffer is sent to the clients. Some codecs have a higher latency and will need more data, e.g. Flac will need ~26ms chunks\cf3 \
+\cf2 #chunk_ms = 20\cf3 \
+\
+\cf2 # Buffer [ms]\cf3 \
+\cf2 # The end-to-end latency, from capturing a sample on the server until the sample is played-out on the client\cf3 \
+\cf2 #buffer = 1000\cf3 \
+\
+\cf2 # Send audio to muted clients\cf3 \
+\cf2 #send_to_muted = false\cf3 \
+\cf2 #\cf3 \
+\cf2 ###############################################################################\cf3 \
+\
+\
+\cf2 # Logging options #############################################################\cf3 \
+\cf2 #\cf3 \
+
+\f1\b \cf4 [logging]
+\f0\b0 \cf3 \
+\
+\cf2 # log sink [null,system,stdout,stderr,file:<filename>]\cf3 \
+\cf2 # when left empty: if running as daemon "system" else "stdout"\cf3 \
+\cf2 #sink = \cf3 \
+\
+\cf2 # log filter <tag>:<level>[,<tag>:<level>]* \cf3 \
+\cf2 # with tag = * or <log tag> and level = [trace,debug,info,notice,warning,error,fatal]\cf3 \
+\cf2 #filter = *:info\cf3 \
+\cf2 #\cf3 \
+\cf2 ###############################################################################\cf3 \
+\
+}
